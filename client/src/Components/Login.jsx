@@ -117,7 +117,7 @@ function Login() {
                             onClick={loginUser}
                         />
                         {msg && <p className="response-message">{msg}</p>}
-                        <NavLink to='/forgotpass'>Forgot Password?</NavLink>
+                        <NavLink className='forgot-pass' to='/forgotpass'>Forgot Password?</NavLink>
                         <p className="log-in-link">
                             Dont have an account? <NavLink to="/register">Register here</NavLink>
                         </p>

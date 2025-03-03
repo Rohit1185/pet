@@ -1,5 +1,7 @@
 import "../../assets/ManageUsers.css";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import moment from "moment";
 
@@ -53,18 +55,56 @@ export default function ManageShelters() {
 
   // ✅ Save Updated Shelter
   const saveShelter = async () => {
+    if (!editableShelter) return;
+  
+    // ✅ Validation: Prevent empty fields
+    if (
+      !editableShelter.shelterName.trim() ||
+      !editableShelter.userFname.trim() ||
+      !editableShelter.userEmail.trim() ||
+      !editableShelter.shelterContact.trim() ||
+      !editableShelter.shelterAddress.trim()
+    ) {
+      toast.error("All fields are required!");
+      return;
+    }
+  
+    // ✅ Email Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(editableShelter.userEmail)) {
+      toast.error("Invalid email format!");
+      return;
+    }
+  
+    // ✅ Contact Number Validation (10-digit)
+    const contactRegex = /^\d{10}$/;
+    if (!contactRegex.test(editableShelter.shelterContact)) {
+      toast.error("Contact number must be 10 digits!");
+      return;
+    }
+  
     try {
-      await axios.put(`http://localhost:8080/registerusers/${editableShelter.userId}`, editableShelter);
-      setShelters(shelters.map(shelter => (shelter.userId === editableShelter.userId ? editableShelter : shelter)));
-      alert("Shelter updated successfully!");
+      await axios.put(
+        `http://localhost:8080/registerusers/${editableShelter.userId}`,
+        editableShelter
+      );
+  
+      // ✅ Update State
+      setShelters(
+        shelters.map((shelter) =>
+          shelter.userId === editableShelter.userId ? editableShelter : shelter
+        )
+      );
+  
+      toast.success("Shelter updated successfully!"); // 🎉 Success Notification
       setEditingShelterId(null);
       setEditableShelter(null);
     } catch (error) {
       console.error("Error updating shelter:", error);
-      alert("Failed to update shelter.");
+      toast.error("Failed to update shelter.");
     }
   };
-
+  
   // ✅ Filter Shelters Based on Search Query
   const filteredShelters = shelters.filter(shelter =>
     shelter.shelterName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -113,22 +153,45 @@ export default function ManageShelters() {
                      alt="Shelter" id="user-img" />
               </td>
               <td>
-                {editingShelterId === shelter.userId ? (
-                  <input type="text" value={editableShelter.shelterName} onChange={(e) => handleChange(e, "shelterName")} />
-                ) : (
-                  shelter.shelterName
-                )}
-              </td>
-              <td>
-                {editingShelterId === shelter.userId ? (
-                  <input type="text" value={editableShelter.userFname} onChange={(e) => handleChange(e, "userFname")} />
-                ) : (
-                  `${shelter.userFname} ${shelter.userLname}`
-                )}
-              </td>
-              <td>{shelter.userEmail}</td>
-              <td>{shelter.shelterContact}</td>
-              <td>{shelter.shelterAddress}</td>
+  {editingShelterId === shelter.userId ? (
+    <input type="text" value={editableShelter.shelterName} onChange={(e) => handleChange(e, "shelterName")} />
+  ) : (
+    shelter.shelterName
+  )}
+</td>
+
+<td>
+  {editingShelterId === shelter.userId ? (
+    <input type="text" value={editableShelter.userFname} onChange={(e) => handleChange(e, "userFname")} />
+  ) : (
+    `${shelter.userFname} ${shelter.userLname}`
+  )}
+</td>
+
+<td>
+  {editingShelterId === shelter.userId ? (
+    <input type="email" value={editableShelter.userEmail} onChange={(e) => handleChange(e, "userEmail")} />
+  ) : (
+    shelter.userEmail
+  )}
+</td>
+
+<td>
+  {editingShelterId === shelter.userId ? (
+    <input type="text" value={editableShelter.shelterContact} onChange={(e) => handleChange(e, "shelterContact")} />
+  ) : (
+    shelter.shelterContact
+  )}
+</td>
+
+<td>
+  {editingShelterId === shelter.userId ? (
+    <input type="text" value={editableShelter.shelterAddress} onChange={(e) => handleChange(e, "shelterAddress")} />
+  ) : (
+    shelter.shelterAddress
+  )}
+</td>
+
               <td>{moment(shelter.createdAt).format("DD-MM-YYYY")}</td>
               <td className={shelter.status === "Enabled" ? "status-enabled" : "status-disabled"}>
                 {shelter.status}

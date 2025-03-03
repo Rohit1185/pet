@@ -5,25 +5,24 @@ import moment from "moment";
 
 export default function ManagePets() {
   const [pets, setPets] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); // ✅ Search Query
-  const [currentPage, setCurrentPage] = useState(1); // ✅ Pagination State
-  const petsPerPage = 5; // ✅ Show 5 pets per page
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const petsPerPage = 5;
 
   const [editingPetId, setEditingPetId] = useState(null);
   const [editablePet, setEditablePet] = useState(null);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const fetchPets = async () => {
       try {
         const response = await axios.get("http://localhost:8080/shelter-list-page");
-        console.log(response.data)
         setPets(response.data);
       } catch (error) {
         console.error("Error fetching pets:", error);
         alert("Failed to fetch pets.");
       }
     };
-
     fetchPets();
   }, []);
 
@@ -45,6 +44,7 @@ export default function ManagePets() {
   const startEditing = (pet) => {
     setEditingPetId(pet.petId);
     setEditablePet({ ...pet });
+    setErrors({});
   };
 
   // ✅ Handle Input Changes
@@ -52,8 +52,27 @@ export default function ManagePets() {
     setEditablePet({ ...editablePet, [field]: e.target.value });
   };
 
+  // ✅ Validation Function
+  const validateForm = () => {
+    const newErrors = {};
+    if (!editablePet.petName.trim()) newErrors.petName = "Pet name is required.";
+    if (!editablePet.petBreed.trim()) newErrors.petBreed = "Breed is required.";
+    if (!editablePet.shelterName.trim()) newErrors.shelterName = "Shelter name is required.";
+    if (!editablePet.petAge || isNaN(editablePet.petAge) || editablePet.petAge <= 0) {
+      newErrors.petAge = "Enter a valid age.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   // ✅ Save Updated Pet
   const savePet = async () => {
+    if (!validateForm()) {
+      alert("Please fix the validation errors before saving.");
+      return;
+    }
+
     try {
       await axios.put(`http://localhost:8080/shelter-list-page/${editablePet.petId}`, editablePet);
       setPets(pets.map(pet => (pet.petId === editablePet.petId ? editablePet : pet)));
@@ -70,7 +89,7 @@ export default function ManagePets() {
   const filteredPets = pets.filter(pet =>
     pet.petName.toLowerCase().includes(searchQuery.toLowerCase()) ||
     pet.petBreed.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    pet.shelterId.toLowerCase().includes(searchQuery.toLowerCase())
+    pet.shelterName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   // ✅ Pagination Logic
@@ -95,7 +114,6 @@ export default function ManagePets() {
       <table id="admin-table">
         <thead>
           <tr>
-          
             <th>Pet ID</th>
             <th>Name</th>
             <th>Breed</th>
@@ -109,24 +127,47 @@ export default function ManagePets() {
         <tbody>
           {currentPets.map(pet => (
             <tr key={pet._id}>
-              
               <td>{pet.petId}</td>
               <td>
                 {editingPetId === pet.petId ? (
-                  <input type="text" value={editablePet.petName} onChange={(e) => handleChange(e, "petName")} />
+                  <>
+                    <input type="text" value={editablePet.petName} onChange={(e) => handleChange(e, "petName")} />
+                    {errors.petName && <p className="error">{errors.petName}</p>}
+                  </>
                 ) : (
                   pet.petName
                 )}
               </td>
               <td>
                 {editingPetId === pet.petId ? (
-                  <input type="text" value={editablePet.petBreed} onChange={(e) => handleChange(e, "petBreed")} />
+                  <>
+                    <input type="text" value={editablePet.petBreed} onChange={(e) => handleChange(e, "petBreed")} />
+                    {errors.petBreed && <p className="error">{errors.petBreed}</p>}
+                  </>
                 ) : (
                   pet.petBreed
                 )}
               </td>
-              <td>{pet.petAge}</td>
-              <td>{pet.shelterName}</td>
+              <td>
+                {editingPetId === pet.petId ? (
+                  <>
+                    <input type="number" value={editablePet.petAge} onChange={(e) => handleChange(e, "petAge")} />
+                    {errors.petAge && <p className="error">{errors.petAge}</p>}
+                  </>
+                ) : (
+                  pet.petAge
+                )}
+              </td>
+              <td>
+                {editingPetId === pet.petId ? (
+                  <>
+                    <input type="text" value={editablePet.shelterName} onChange={(e) => handleChange(e, "shelterName")} />
+                    {errors.shelterName && <p className="error">{errors.shelterName}</p>}
+                  </>
+                ) : (
+                  pet.shelterName
+                )}
+              </td>
               <td>{moment(pet.createdAt).format("DD-MM-YYYY")}</td>
               <td>{pet.adoptionStatus}</td>
               <td>
@@ -149,27 +190,13 @@ export default function ManagePets() {
 
       {/* ✅ Pagination Buttons */}
       <div className="pagination">
-        <button
-          disabled={currentPage === 1}
-          onClick={() => setCurrentPage(currentPage - 1)}
-        >
-          Previous
-        </button>
+        <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>
         {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i}
-            className={currentPage === i + 1 ? "active-page" : ""}
-            onClick={() => setCurrentPage(i + 1)}
-          >
+          <button key={i} className={currentPage === i + 1 ? "active-page" : ""} onClick={() => setCurrentPage(i + 1)}>
             {i + 1}
           </button>
         ))}
-        <button
-          disabled={currentPage === totalPages}
-          onClick={() => setCurrentPage(currentPage + 1)}
-        >
-          Next
-        </button>
+        <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)}>Next</button>
       </div>
     </div>
   );

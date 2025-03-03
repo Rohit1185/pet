@@ -7,6 +7,8 @@ export default function ManageReports() {
   const [selectedReport, setSelectedReport] = useState("user"); // Toggle option
   const [users, setUsers] = useState([]);
   const [shelters, setShelters] = useState([]);
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [loading, setLoading] = useState(true);
   const [userReports, setUserReports] = useState({});
   const [shelterReports, setShelterReports] = useState({});
   // eslint-disable-next-line no-unused-vars
@@ -18,6 +20,7 @@ export default function ManageReports() {
   useEffect(() => {
     fetchUsers();
     fetchShelters();
+    fetchUserReport();
     fetchEventsByShelter();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -25,38 +28,64 @@ export default function ManageReports() {
   // ✅ Fetch Users & Their Donation Reports
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/registerusers");
-      const normalUsers = response.data.filter(user => user.isShelter === "NO");
-      console.log("Normal Users",normalUsers)
-      setUsers(normalUsers);
-  
-      const reports = await Promise.all(
-        normalUsers.map(async (user) => {
-          const adoptionData = await getTotalAdoptionRequests(user.userId);
-          const eventData = await getTotalEventParticipation(user.userId); // ✅ Fetch event participation data
-  
-          return { 
-            userId: user.userId, 
-            userName: `${user.userFname} ${user.userLname}`, // ✅ Include full name
-            userEmail: user.userEmail, 
-            ...adoptionData,
-            ...eventData, // ✅ Merge event data 
+        const response = await axios.get("http://localhost:8080/registerusers");
+        const normalUsers = response.data.filter(user => user.isShelter === "NO");
+        console.log("Normal Users:", normalUsers);
+        setUsers(normalUsers);
+
+        const reports = await Promise.all(
+            normalUsers.map(async (user) => {
+                const adoptionData = await getTotalAdoptionRequests(user.userId);
+                const eventData = await getTotalEventParticipation(user.userId);
+
+                return { 
+                    userId: user.userId, 
+                    userName: user.userFname ? `${user.userFname} ${user.userLname}` : "Unknown_User", // ✅ Ensure name is set
+                    userEmail: user.userEmail || "No_Email", // ✅ Ensure email is set
+                    ...adoptionData,
+                    ...eventData,
+                };
+            })
+        );
+
+        const names = normalUsers.map(user => {
+          console.log("Mapping User:", user);
+          return {
+              userId: user.userId,
+              userName: user.userFname ? `${user.userFname} ${user.userLname}` : "Unknown_User",
+              userEmail: user.userEmail || "No_Email",
           };
-        })
-      );
-  
-      const reportsObj = reports.reduce((acc, report) => {
-        acc[report.userId] = report;
-        return acc;
+      });
+        console.log("Generated name:", names); // ✅ Debugging log
+
+        const reportsObj = reports.reduce((acc, report) => {
+          const matchingUser = normalUsers.find(user => user.userId === report.userId); // ✅ Find matching user
+          acc[report.userId] = {
+              ...report,
+              userName: matchingUser ? `${matchingUser.userFname} ${matchingUser.userLname}` : "Unknown_User",
+              userEmail: matchingUser ? matchingUser.userEmail : "No_Email",
+          };
+          return acc;
       }, {});
-  
-      setUserReports(reportsObj);
-  
+      
+
+        setUserReports(reportsObj);
+        console.log("User Reports (After Setting):", reportsObj);
+
     } catch (error) {
-      console.error("Error fetching users:", error);
+        console.error("Error fetching users:", error);
     }
-  };
-  
+};
+
+const handleDownloadReport = (userId) => {
+  const userData = userReports[userId];  // ✅ Get correct user data
+  if (!userData) {
+      console.error("User data not found for report.");
+      return;
+  }
+  console.log("Final User Data for PDF:", userData);  // Debugging log
+  downloadReportUser(userData);  // ✅ Pass complete user data
+};
   const getTotalAdoptionRequests = async (userId) => {
     try {
       const response = await axios.get(`http://localhost:8080/user-adoptions/${userId}`)
@@ -119,7 +148,7 @@ export default function ManageReports() {
       console.error("No data available to generate PDF.");
       return;
     }
-  
+    console.log(userData)
     const doc = new jsPDF();
   
     // ✅ Extract user details from userData
@@ -134,7 +163,8 @@ export default function ManageReports() {
     doc.text(`User Email: ${userEmail}`, 14, 32);
   
     let startY = 40; // Initial Y position for tables
-  
+    
+
     // ✅ Adoption Requests Section
     if (userData.requests && userData.requests.length > 0) {
       doc.text("Adoption Requests", 14, startY);
@@ -169,8 +199,7 @@ export default function ManageReports() {
         event.maxlimit,
         event.time
       ]));
-  
-      // hello
+
       autoTable(doc, { head: [eventColumns], body: eventRows, startY });
       startY = doc.lastAutoTable.finalY + 10;
       doc.text(`Total Events Participated: ${userData.totalEvents}`, 14, startY);
@@ -182,8 +211,71 @@ export default function ManageReports() {
   
     doc.save(fileName);
   };
+
+
+  const downloadUserReportUser = () => {
+    const doc = new jsPDF();
   
+    // Add a title
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.text("User Report", 105, 20, { align: "center" });
   
+    // Subtitle
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Total Users: ${totalUsers}`, 105, 30, { align: "center" });
+  
+    // Line separator
+    doc.setLineWidth(0.5);
+    doc.line(15, 35, 195, 35);
+  
+    // Define table columns and rows
+    const tableColumn = ["#", "Name", "Email", "Contact","Registration Date"];
+    const tableRows = users.map((user, index) => [
+      index + 1,
+      user.userFname,
+      user.userEmail,
+      user.userContact,
+      moment(user.createdAt).format('DD-MM-YYYY')
+    ]);
+  
+    // Apply autoTable
+    autoTable(doc, {
+      startY: 40,
+      head: [tableColumn],
+      body: tableRows,
+      theme: "striped",
+      styles: {
+        font: "helvetica",
+        fontSize: 10,
+        cellPadding: 4,
+        textColor: [44, 62, 80], // Dark grayish blue
+      },
+      headStyles: {
+        fillColor: [52, 152, 219], // Light Blue Header
+        textColor: [255, 255, 255], // White Text
+        fontSize: 11,
+        fontStyle: "bold",
+      },
+      alternateRowStyles: {
+        fillColor: [240, 240, 240], // Light Gray
+      },
+    });
+  
+    // Add footer with page number
+    const pageCount = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= pageCount; i++) {
+      doc.setPage(i);
+      doc.setFontSize(10);
+      doc.text(`Page ${i} of ${pageCount}`, 105, doc.internal.pageSize.height - 10, {
+        align: "center",
+      });
+    }
+  
+    // Save PDF
+    doc.save("User_Report.pdf");
+  };
   // ✅ Fetch Shelters & Their Reports
   const fetchShelters = async () => {
     try {
@@ -238,6 +330,19 @@ export default function ManageReports() {
     } catch (error) {
       console.error("Error fetching shelter details:", error);
       return { shelterName: "Unknown", userEmail: "Unknown" };
+    }
+  };
+
+  const fetchUserReport = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/user-report");
+      console.log("Total user Report",response.data.users);
+      setUsers(response.data.users);
+      setTotalUsers(response.data.totalUsers);
+    } catch (error) {
+      console.error("Error fetching user report:", error);
+    } finally {
+      setLoading(false);
     }
   };
   
@@ -406,6 +511,7 @@ console.log(details);
 
       {/* User Reports */}
       {selectedReport === "user" && (
+        <>
        <table id="admin-table">
        <thead>
          <tr>
@@ -426,7 +532,7 @@ console.log(details);
              <td>
                <button 
                  id="download-btn" 
-                 onClick={() => downloadReportUser(userReports[user.userId])}
+                 onClick={() => handleDownloadReport(user.userId)}
                >
                  Download PDF
                </button>
@@ -435,7 +541,11 @@ console.log(details);
          ))}
        </tbody>
      </table>     
-     
+     <h3>Total Users: {totalUsers}</h3>
+     <button onClick={downloadUserReportUser} disabled={loading}>
+        Download User Report
+      </button>
+     </>
       )}
 
       {/* Shelter Reports */}

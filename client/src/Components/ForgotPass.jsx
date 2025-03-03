@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import {useNavigate} from 'react-router-dom'
 import "../assets/forgotpass.css"; // Import the CSS file
 
 const ForgotPassword = () => {
@@ -8,7 +9,7 @@ const ForgotPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [step, setStep] = useState(1);
   const [message, setMessage] = useState("");
-
+  let navigate = useNavigate();
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -53,6 +54,7 @@ const ForgotPassword = () => {
 
       console.log("✅ Response:", response.data);
       setMessage(response.data.message || "Password reset successfully.");
+      navigate('/login')
       setStep(1);
       setEmail(""); 
       setCode(""); 

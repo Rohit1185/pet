@@ -35,8 +35,8 @@ function ProfileUpdate() {
         {isShelter === 'YES'?(<NavLink to={`/my-feedback/${shelterId}`} className='link'>Ratings</NavLink>):(
           ""
         )}
-        {isShelter==="YES"?(<NavLink className='link' to={`/my-shelter-report/${shelterId}`}>Reports</NavLink>):(
-          <NavLink className='link' to={`/track-my-report/${userId}`}>My Reports</NavLink>
+        {isShelter==="YES"?(<NavLink className='link' to={`/my-shelter-report/${shelterId}`}>Complain</NavLink>):(
+          <NavLink className='link' to={`/track-my-report/${userId}`}>My Complain</NavLink>
         )}
         
 

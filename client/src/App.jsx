@@ -46,13 +46,14 @@ import Reports from './Components/Reports'
 import MyReports from './Components/MyReport'
 import ForgotPassword from './Components/ForgotPass';
 import ViewApplication from './Components/ViewApplication';
+import { ToastContainer } from 'react-toastify';
 function App() {
   const[isloggedinstate,setisloggeedinstate]= useState(false);
   const[userdetails,setuserdetails] = useState({isShelter:"No"});
 
   return (
     <>
-  
+   <ToastContainer position="top-right" autoClose={3000} />
     <userContext.Provider value={{isloggedin:isloggedinstate,setloggedin:  setisloggeedinstate}}>
       <userProfile.Provider value={{userdetails:userdetails,setuserdetails:setuserdetails}}>
       <BrowserRouter>

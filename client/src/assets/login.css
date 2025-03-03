@@ -1,110 +1,169 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&family=Roboto:wght@100..900&family=Rubik:wght@300..900&display=swap');
 
-.log-main{
-    border: 1px solid black;
-    background-image: url('../assets/backimg2.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Rubik", sans-serif;
+    background-color: #f4f7fc;
+}
+
+.log-main {
+    background: url('../assets/backimg2.jpg') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Rubik", serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
 }
-.login{
-    color: white;
-}
-#email{
-    position: relative;
-    left: 20px;
-}
-#password{
-    position: relative;
-    left: 20px;
-}
-.log-main2{
-    background-color: rgba(250, 235, 215, 0.057);
-    justify-content: center;
-    align-items: center;
+
+.log-main2 {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
     display: flex;
-    width: 1100px;
-    height: 500px;
-    border-radius: 25px;
-}
-.log-dog-photo{
-    left: 80px;
-    position: relative;
-    width: 80vw;
-}
-.log_box_white{
-    display: flex;
-    justify-content: center;
     align-items: center;
-    background-color: rgba(240, 255, 127, 0.055);
-    height: 500px;
-    width: 100vw;
-    border-radius: 25px;
+    width: 85%;
+    max-width: 1000px;
+    height: 520px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 25px;
+    overflow: hidden;
 }
-.logform2{
+
+.log-dog-photo {
+    width: 48%;
+    max-width: 450px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.log_box_white {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    
+    width: 52%;
+    padding: 25px;
 }
 
-.log_box_white > form>h1{
+.log_box_white h1 {
     text-align: center;
-    position: relative;
-    bottom: 50px;
-    font-weight: bolder;
-    font-size: 50px;
+    font-weight: bold;
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 15px;
 }
-.log_box_white > form > input[type='email'],input[type='password']{
-    border-radius: 10px;
-    border:none;
-    height: 30px;
-    padding-left: 10px;
+
+.logform2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
-.log-label{
-    position: relative;
-    left: 20px;
+
+.log-label {
+    font-size: 15px;
+    color: #ffffff;
+    margin-bottom: 8px;
+    font-weight: 500;
 }
-.button-login{
-    color:rgb(187, 187, 187);
-    background-image: linear-gradient(to right, rgba(113, 39, 142, 0.943) , rgb(202, 99, 25));
+
+input[type='email'], 
+input[type='password'] {
+    width: 100%;
+    border-radius: 12px;
     border: none;
-    border-radius: 20px;
-    height: 27px;
-    font-weight: bolder;
-    font-size: 19px;
-    position: relative;
-    height: 30px;
-    cursor: pointer;
-    left: 20px;
-    top: 10px;
-}
-.log-in-link{
-    margin-top: 50px;
-    font-weight: 100;
-    position: relative;
-    left: 0%;
-}
-.log-in-link > a{
-    text-decoration: none;
+    height: 45px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
     outline: none;
-    color: rgb(65, 27, 27);
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
 }
-.response-message{
+
+input[type='email']::placeholder, 
+input[type='password']::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input[type='email']:focus, 
+input[type='password']:focus {
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid #ff9900;
+}
+
+.button-login {
+    background: linear-gradient(135deg, #6e48aa, #9d50bb);
+    border: none;
+    border-radius: 25px;
+    height: 45px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.button-login:hover {
+    background: linear-gradient(135deg, #9d50bb, #ff8a00);
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.log-in-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.log-in-link a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #ff9900;
+    transition: 0.3s;
+}
+
+.log-in-link a:hover {
+    text-decoration: underline;
+}
+
+.response-message, .error {
+    font-size: 14px;
+    text-align: center;
     color: rgb(186, 6, 6);
     margin-top: 10px;
-    font-weight: 400;
 }
-.error{
-    margin-left: 15px;
-    color: rgb(186, 6, 6);
-    height: 5px;
-    font-weight: 400;
+.forgot-pass{
+    margin-left: 270px;
+    padding:20px;
+}
+@media (max-width: 850px) {
+    .log-main2 {
+        flex-direction: column;
+        height: auto;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .log-dog-photo {
+        width: 90%;
+        max-width: 320px;
+        margin-bottom: 20px;
+    }
+
+    .log_box_white {
+        width: 100%;
+    }
+
+    input[type='email'], 
+    input[type='password'],
+    .button-login {
+        width: 90%;
+        margin: 0 auto;
+    }
 }

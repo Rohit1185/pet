@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import axios from "axios";
 import moment from "moment";
 
@@ -147,13 +148,35 @@ export default function ManageUsers() {
                     onChange={(e) => handleChange(e, "userFname")}
                   />
                 ) : (
-                  `${user.userFname} ${user.userLname}`
+                  `${user.userFname}`
                 )}
               </td>
 
-              <td>{user.userEmail}</td>
 
-              <td>{user.userContact}</td>
+<td>
+  {editingUserId === user.userId && editableUser ? (
+    <input
+      type="email"
+      value={editableUser.userEmail}
+      onChange={(e) => handleChange(e, "userEmail")}
+    />
+  ) : (
+    user.userEmail
+  )}
+</td>
+
+<td>
+  {editingUserId === user.userId && editableUser ? (
+    <input
+      type="text"
+      value={editableUser.userContact}
+      onChange={(e) => handleChange(e, "userContact")}
+    />
+  ) : (
+    user.userContact
+  )}
+</td>
+
 
               <td>
                 <span

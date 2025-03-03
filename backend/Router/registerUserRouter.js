@@ -198,6 +198,7 @@ router.get('/shelter-add-events',registerUserController.getAllEvents);
 router.get("/add-donation", registerUserController.getAllDonations);
 router.get('/shelter-list-page',registerUserController.getAllPets)
 router.get("/myeventparticipations/:userId", registerUserController.getUserEventParticipations);
+router.get("/user-report", registerUserController.getUsersReport);
 
 
 // DELETE METHOD

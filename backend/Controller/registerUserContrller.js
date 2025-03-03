@@ -1108,8 +1108,8 @@ const crypto = require('crypto');
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "codekarma3812@gmail.com  ", // Replace with your email
-    pass: "wzce svav dlzq vdoi", // Use App Password, NOT your email password
+    user: "petadoptionplatform.amd@gmail.com  ", // Replace with your email
+    pass: "bbxd lsys jfsd uftd", // Use App Password, NOT your email password
   },
 });
 
@@ -1139,7 +1139,7 @@ exports.sendResetCode = async (req, res) => {
 
     // Configure email options
     const mailOptions = {
-      from: "codekarma3812@gmail.com",
+      from: "petadoptionplatform.amd@gmail.com",
       to: user.userEmail,
       subject: "Password Reset Code",
       text: `Your password reset code is: ${token}`,
@@ -1583,5 +1583,21 @@ exports.getTotalEventParticipation = async (req, res) => {
   } catch (error) {
       console.error("Error fetching event participation:", error);
       res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+exports.getUsersReport = async (req, res) => {
+  try {
+    const users = await registerUserModel.find({ isShelter: "NO" });
+
+    if (!users.length) {
+      return res.status(404).json({ message: "No users found" });
+    }
+
+    res.status(200).json({
+      totalUsers: users.length,
+      users,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
   }
 };

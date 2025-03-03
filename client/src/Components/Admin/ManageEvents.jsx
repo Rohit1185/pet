@@ -1,16 +1,16 @@
-// import "../../assets/ManageEvents.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
+import { toast } from "react-toastify";
 
 export default function ManageEvents() {
   const [events, setEvents] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); // ✅ Search Query
-  const [currentPage, setCurrentPage] = useState(1); // ✅ Pagination
-  const eventsPerPage = 5; // ✅ Show 5 events per page
-
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const eventsPerPage = 5;
   const [editingEventId, setEditingEventId] = useState(null);
   const [editableEvent, setEditableEvent] = useState(null);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -19,60 +19,79 @@ export default function ManageEvents() {
         setEvents(response.data);
       } catch (error) {
         console.error("Error fetching events:", error);
-        alert("Failed to fetch events.");
+        toast.error("Failed to fetch events.");
       }
     };
-
     fetchEvents();
   }, []);
 
-  // ✅ Delete Event
+  // Delete Event
   const deleteEvent = async (_id) => {
     if (window.confirm("Are you sure you want to delete this event?")) {
       try {
         await axios.delete(`http://localhost:8080/shelter-add-events/${_id}`);
         setEvents(events.filter(event => event._id !== _id));
-        alert("Event deleted successfully!");
+        toast.success("Event deleted successfully!");
       } catch (error) {
         console.error("Error deleting event:", error);
-        alert("Failed to delete event.");
+        toast.error("Failed to delete event.");
       }
     }
   };
 
-  // ✅ Enable Editing Mode
+  // Enable Editing Mode
   const startEditing = (event) => {
     setEditingEventId(event._id);
     setEditableEvent({ ...event });
+    setErrors({});
   };
 
-  // ✅ Handle Input Changes (Updated to use eventname instead of eventName)
+  // Handle Input Changes
   const handleChange = (e, field) => {
     setEditableEvent({ ...editableEvent, [field]: e.target.value });
   };
 
-  // ✅ Save Updated Event
+  // Validation Function
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!editableEvent.eventname.trim()) newErrors.eventname = "Event name is required.";
+    if (!editableEvent.place.trim()) newErrors.place = "Location is required.";
+    if (!editableEvent.category.trim()) newErrors.category = "Category is required.";
+    if (!editableEvent.shelterName.trim()) newErrors.shelterName = "Organizer is required.";
+    if (!/^\d{10}$/.test(editableEvent.shelterContact)) newErrors.shelterContact = "Contact must be 10 digits.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Save Updated Event
   const saveEvent = async () => {
+    if (!validateForm()) {
+      toast.error("Please fix the validation errors before saving.");
+      return;
+    }
+
     try {
       await axios.put(`http://localhost:8080/shelter-add-events/${editableEvent._id}`, editableEvent);
       setEvents(events.map(event => (event._id === editableEvent._id ? editableEvent : event)));
-      alert("Event updated successfully!");
+      toast.success("Event updated successfully!");
       setEditingEventId(null);
       setEditableEvent(null);
     } catch (error) {
       console.error("Error updating event:", error);
-      alert("Failed to update event.");
+      toast.error("Failed to update event.");
     }
   };
 
-  // ✅ Filter & Search Events
+  // Filter & Search Events
   const filteredEvents = events.filter(event =>
     event.eventname.toLowerCase().includes(searchQuery.toLowerCase()) ||
     event.place.toLowerCase().includes(searchQuery.toLowerCase()) ||
     event.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // ✅ Pagination Logic
+  // Pagination Logic
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
   const currentEvents = filteredEvents.slice(indexOfFirstEvent, indexOfLastEvent);
@@ -108,15 +127,74 @@ export default function ManageEvents() {
             <tr key={event._id}>
               <td>
                 {editingEventId === event._id ? (
-                  <input type="text" value={editableEvent.eventname} onChange={(e) => handleChange(e, "eventname")} />
+                  <>
+                    <input
+                      type="text"
+                      value={editableEvent.eventname}
+                      onChange={(e) => handleChange(e, "eventname")}
+                    />
+                    {errors.eventname && <p className="error">{errors.eventname}</p>}
+                  </>
                 ) : (
                   event.eventname
                 )}
               </td>
-              <td>{event.place}</td>
-              <td>{event.category}</td>
-              <td>{event.shelterName}</td>
-              <td>{event.shelterContact}</td>
+              <td>
+                {editingEventId === event._id ? (
+                  <>
+                    <input
+                      type="text"
+                      value={editableEvent.place}
+                      onChange={(e) => handleChange(e, "place")}
+                    />
+                    {errors.place && <p className="error">{errors.place}</p>}
+                  </>
+                ) : (
+                  event.place
+                )}
+              </td>
+              <td>
+                {editingEventId === event._id ? (
+                  <>
+                    <input
+                      type="text"
+                      value={editableEvent.category}
+                      onChange={(e) => handleChange(e, "category")}
+                    />
+                    {errors.category && <p className="error">{errors.category}</p>}
+                  </>
+                ) : (
+                  event.category
+                )}
+              </td>
+              <td>
+                {editingEventId === event._id ? (
+                  <>
+                    <input
+                      type="text"
+                      value={editableEvent.shelterName}
+                      onChange={(e) => handleChange(e, "shelterName")}
+                    />
+                    {errors.shelterName && <p className="error">{errors.shelterName}</p>}
+                  </>
+                ) : (
+                  event.shelterName
+                )}
+              </td>
+              <td>
+                {editingEventId === event._id ? (
+                  <>
+                    <input
+                      type="text"
+                      value={editableEvent.shelterContact}
+                      onChange={(e) => handleChange(e, "shelterContact")}
+                    />
+                    {errors.shelterContact && <p className="error">{errors.shelterContact}</p>}
+                  </>
+                ) : (
+                  event.shelterContact
+                )}
+              </td>
               <td>{moment(event.eventDate).format("DD-MM-YYYY")}</td>
               <td>
                 {editingEventId === event._id ? (
@@ -136,7 +214,7 @@ export default function ManageEvents() {
         </tbody>
       </table>
 
-      {/* ✅ Pagination Buttons */}
+      {/* Pagination Buttons */}
       <div className="pagination">
         <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>
         {Array.from({ length: totalPages }, (_, i) => (

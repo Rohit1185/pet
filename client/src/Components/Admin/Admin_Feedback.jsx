@@ -17,9 +17,11 @@ const AdminFeedback = () => {
     const fetchData = async () => {
       try {
         const feedbackResponse = await axios.get("http://localhost:8080/feedback");
+        console.log(feedbackResponse.data.feedbacks)
         setFeedbacks(feedbackResponse.data.feedbacks);
 
         const reportsResponse = await axios.get("http://localhost:8080/reports");
+        console.log("User data Of Reports",reportsResponse.data.users)
         setReports(reportsResponse.data.reports);
         setUsers(reportsResponse.data.users);
         setShelters(reportsResponse.data.shelters);
@@ -131,9 +133,9 @@ const AdminFeedback = () => {
                       <td>{item.reason}</td>
                       <td>{item.details}</td>
                       <td>{item.solution || "N/A"}</td>
-                      <td>{item.reportedBy}</td>
-                      <td>{item.email}</td>
-                      <td>{item.contact}</td>
+                      <td>{users.map((e)=>(e.userFname))}</td>
+                      <td>{users.map((e)=>(e.userEmail))}</td>
+                      <td>{users.map((e)=>(e.userContact))}</td>
                       <td>{item.status}</td>
                     </>
                   ) : (

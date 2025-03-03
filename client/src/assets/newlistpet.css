@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    /* background: linear-gradient(to right, #74ebd5, #acb6e5); */
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .form-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 20px 0;
+    color: #333;
+    font-weight: bold;
+  }
+  .list-pet-form {
+    background: #ffffff;
+    width: 60%;
+    height: 900px;
+    margin: 20px auto;
+    padding: 25px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .list-pet-form:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  .list-pet-form > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+  }
+  
+  .list-pet-form > form > label {
+    color: #555;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  .petphoto-label {
+    position: relative;
+    top: -1px;
+  }
+  
+  #same-label {
+    margin-top: 15px;
+  }
+    
+  .list-pet-form > form > select{
+    width: 93%;
+    height: 40px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .list-pet-form > form > input {
+    width: 90%;
+    height: 40px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .list-pet-form > form > input:focus,
+  select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  }
+  .submit-btn {
+    width: 100%;
+    background: linear-gradient(to right, #007bff, #0056b3);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .submit-btn:hover {
+    background: linear-gradient(to right, #0056b3, #003e7e);
+  }
+  
+.list-pet-form> form > [type="file"] {
+    padding: 8px;
+  }
+  
+  #select {
+    position: relative;
+  }
+  
+  .list-pet-form> form > input[type="text"],
+  input[type="number"],
+  input[type="file"],
+  select {
+    background: #f9f9f9;
+  }
+  
+  .list-pet-form> form >input[type="text"]:focus,
+  input[type="number"]:focus,
+  select:focus {
+    background: #ffffff;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .checkbox{
+    padding: 10px;
+  }
+  .checkbox > .checkbox-value > input[type='checkbox']{
+    margin-top: 10px;
+  }
+  .list-pet-form> form >input[type="button"] {
+    margin-top:40px ;
+  }
+  
+  @media (max-width: 768px) {
+    .list-pet-form {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .form-title {
+      font-size: 2rem;
+    }
+  }
+  

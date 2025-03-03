@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+/* 🎨 Global Styles */
+*{
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🎨 General Styles */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🏠 Hero Section */
+.home-hero {
+    height: 80vh;
+    background-image: url('../assets/bg-new.jpg'); /* Make sure the correct path is used */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.hero-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    background-color: #0056b3;
+}
+
+.hero-btn img {
+    width: 25px;
+}
+.hero-btn >a{
+    text-decoration: none;
+    color: white;
+}
+/* 🐾 How It Works Section */
+.how-it-works {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.how-it-works h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.step {
+    background: #007bff;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.step >p{
+    position: relative;
+    left: 0%;
+}
+.story >p{
+    
+    position: relative;
+    left: 0%;
+}
+/* ❤️ Success Stories */
+.success-stories {
+    background-color: #f0f8ff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.success-stories h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.story > img{
+    height: 200px;
+    width: 260px;
+}
+.stories {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.story {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.story h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* 🌟 Testimonials */
+.testimonials {
+    padding: 60px 20px;
+    text-align: center;
+    background: #fff;
+}
+
+.testimonials h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.testimonial-box {
+    background: #007bff;
+    color: white;
+    padding: 20px;
+    margin: 10px auto;
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-box h4 {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* 🎉 Register Section */
+.register-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f8f9fa;
+}
+
+.register-info {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.register-info h2 {
+    font-size: 28px;
+}
+
+.register-info p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    position: relative;
+    left: 0%;
+}
+
+.register-btn {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.register-btn:hover {
+    background-color: #0056b3;
+}
+
+/* 📖 FAQ Section */
+.faq-section {
+    padding: 60px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .step {
+        width: 100%;
+    }
+
+    .stories {
+        flex-direction: column;
+    }
+
+    .story {
+        width: 100%;
+    }
+
+    .testimonial-box {
+        width: 80%;
+    }
+}

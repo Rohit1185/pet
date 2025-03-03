@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+ }
+.reg-form{
+    width: 650px;
+    background-color: rgba(240, 255, 127, 0.055);
+    height: 610px;
+    border-radius: 25px;
+}
+.main{
+    font-family: "Rubik", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    height: 100vh;
+    background-image: url(../assets/backimg2.jpg);
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box_white > form>input[type="text"]{
+    width: 350px;
+    height: 30px;
+    border: 0.5px solid silver;
+    border-radius: 10px;
+    padding-left: 5px;
+    margin-top: 10px;
+}
+.box_white > form>input[type="email"]{
+    width: 350px;
+    height: 30px;
+    border: 0.5px solid silver;
+    border-radius: 10px;
+    padding-left: 5px;
+    margin-top: 10px;
+}
+.box_white>form>input[type="number"]{
+    width: 350px;
+    height: 30px;
+    border: 0.5px solid silver;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-left: 5px;
+}
+.box_white>form>input[type="password"]{
+    width: 350px;
+    height: 30px;
+    border: 0.5px solid silver;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding-left: 5px;
+}
+.box_white>form>input[type="radio"]{
+    position: relative;
+    left: 23px;
+    top: 10px;
+}
+
+h1{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgb(180, 178, 178);
+}
+.box_white>form{
+    height: 650px;
+    padding: 25px;
+}
+.box_white{
+    height: 620px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register{
+    color: white;
+    position: relative;
+    top: 1px;
+}
+.box_white > form{
+    height: 620px;
+}
+.box_white > form >label{
+    font-family:'Times New Roman', Times, serif;
+    color: rgb(180, 178, 178);
+    font-weight: bolder;
+    text-align: left;
+    padding-left: 5px;
+    position: relative;
+    top: 9px;
+}
+
+.main2{
+    background-color: rgba(250, 235, 215, 0.057);
+    border-radius: 5px;
+    height: 620px;
+}
+.button{
+    color:rgb(187, 187, 187);
+    cursor: pointer;
+    background-image: linear-gradient(to right, rgba(113, 39, 142, 0.943) , rgb(202, 99, 25));
+    border: none;
+    border-radius: 20px;
+    height: 27px;
+    width: 220px;
+    font-weight: bolder;
+    font-size: 19px;
+    position: relative;
+    left: 60px;
+}
+.main2{
+    width: 1100px;
+    height: 620px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right_img{
+    height: 400px;
+}
+.sign-in-link{
+    margin-top: 50px;
+    text-align: center;
+
+}
+.sign-in-link > a{
+
+    color: rgb(22, 140, 224);
+    text-decoration: none;
+}
+.sign-in-link{
+    color: rgb(48, 48, 48);
+    margin-top: 10px;
+    font-weight: 100;
+}
+.radio{
+    position: relative;
+    left: 20px;
+}
+.reg-dog-photo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 400px;
+    
+}
+.register-error{
+    color: rgb(191, 0, 0);
+    font-size: 15px;
+    margin-left: 10px;
+}
+.radio-error{
+    position: relative;
+    top: 10px;
+    padding-left: 165px;
+}  

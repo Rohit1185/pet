@@ -1,0 +1,139 @@
+/* Dark Theme Background */
+.pet-food-container {
+    font-family: "Poppins", sans-serif;
+    padding: 30px;
+    max-width: 100%;
+
+    margin: auto;
+    background: #1e1e1e;
+    color: #ffffff;
+    height: 1700px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+.select-pet > h1 {
+    text-align: center;
+    color: #f1c40f;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Pet Select Dropdown */
+.select-pet {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.select-pet > select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #f1c40f;
+    width: 200px;
+    background: #2c2c2c;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.select-pet > select:hover {
+    background: #3a3a3a;
+}
+
+/* Sections */
+.food-section, .restricted-section {
+    background: #292929;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
+}
+
+.food-section:hover, .restricted-section:hover {
+    transform: scale(1.02);
+}
+
+/* Section Headers */
+.food-section > h2 {
+    color: #f1c40f;
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Lists */
+.food-section > ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.food-section > ul li {
+    background: #3a3a3a;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    color: #ffffff;
+}
+
+/* List Icons */
+.food-section > ul li::before {
+    content: "✔";
+    color: #2ecc71;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Hover Effect */
+.food-section > ul li:hover {
+    background: #4a4a4a;
+    transform: translateX(5px);
+}
+
+/* Restricted Foods Section */
+.restricted-section {
+    height: 130px;
+    background: #441919;
+    border-left: 5px solid #e74c3c;
+    
+}
+
+.restricted-section h2 {
+    color: #e74c3c;
+}
+
+/* Warning Icons */
+.restricted-section ul li::before {
+    content: "⚠";
+    color: #e74c3c;
+    
+}
+.restricted-section > ul{
+    display: flex;
+    justify-content: space-around;
+    font-size:20px;
+    list-style: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pet-food-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    ul li {
+        font-size: 14px;
+    }
+}

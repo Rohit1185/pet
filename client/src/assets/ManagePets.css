@@ -1,0 +1,113 @@
+.manage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .pagination button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .pagination .active-page {
+    background: #ff5722;
+  }
+  /* General Button Styles */
+button {
+  padding: 8px 12px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: 6px;
+  margin: 4px;
+}
+
+/* 🎟️ Download Receipt Button */
+#download-btn {
+  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+  color: white;
+  font-weight: bold;
+  border: 1px solid #2E7D32;
+}
+
+#download-btn:hover {
+  background: linear-gradient(135deg, #43A047, #1B5E20);
+  transform: scale(1.05);
+}
+
+/* ✏️ Update Button */
+#update-btn {
+  background: linear-gradient(135deg, #FF9800, #E65100);
+  color: white;
+  font-weight: bold;
+  border: 1px solid #E65100;
+}
+
+#update-btn:hover {
+  background: linear-gradient(135deg, #FB8C00, #BF360C);
+  transform: scale(1.05);
+}
+
+/* ❌ Delete Button */
+#delete-btn {
+  background: linear-gradient(135deg, #E53935, #B71C1C);
+  color: white;
+  font-weight: bold;
+  border: 1px solid #B71C1C;
+}
+
+#delete-btn:hover {
+  background: linear-gradient(135deg, #D32F2F, #7F0000);
+  transform: scale(1.05);
+}
+
+/* 💾 Save Button */
+#save-btn {
+  background: linear-gradient(135deg, #2196F3, #0D47A1);
+  color: white;
+  font-weight: bold;
+  border: 1px solid #0D47A1;
+}
+
+#save-btn:hover {
+  background: linear-gradient(135deg, #1E88E5, #0B3C8C);
+  transform: scale(1.05);
+}
+
+/* ❎ Cancel Button */
+#cancel-btn {
+  background: linear-gradient(135deg, #757575, #424242);
+  color: white;
+  font-weight: bold;
+  border: 1px solid #424242;
+}
+
+#cancel-btn:hover {
+  background: linear-gradient(135deg, #616161, #212121);
+  transform: scale(1.05);
+}

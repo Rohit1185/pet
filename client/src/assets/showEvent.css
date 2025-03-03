@@ -1,0 +1,95 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container to hold only 3 events in a single row */
+.event-list-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns */
+  gap: 20px;
+  padding: 40px;
+  max-width: 1200px; /* Adjusted for 3 columns */
+  margin: 0 auto; /* Center the container */
+}
+
+/* Event Card Styling */
+.event-item {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+}
+
+.event-item:hover {
+  transform: scale(1.05);
+}
+
+/* Event Image Styling */
+.event-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Event Info Styling */
+.event-details {
+  padding: 15px;
+  text-align: left;
+}
+
+.event-name {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Event Details Styling */
+.event-details p {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Button Styling */
+.event-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.event-button:hover {
+  background-color: #0056b3;
+}
+
+/* Handle case when no events are available */
+.no-events-message {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+  margin-top: 50px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .event-list-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns per row on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .event-list-container {
+    grid-template-columns: repeat(1, 1fr); /* 1 column per row on small screens */
+  }
+}

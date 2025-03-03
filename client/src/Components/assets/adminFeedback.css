@@ -1,0 +1,77 @@
+.admin-feedback-container {
+  width: 90%;
+  /* margin: auto; */
+  padding: 20px;
+}
+
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.toggle-buttons button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  background: #ddd;
+  transition: 0.3s;
+}
+
+.toggle-buttons .active {
+  background: #007bff;
+  color: white;
+}
+
+.search-filter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.search-filter input,
+.search-filter select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  width: 48%;
+}
+
+.feedback-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.feedback-section th,
+.feedback-section td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.feedback-section th {
+  background: #007bff;
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  margin: 0 5px;
+  border: none;
+  cursor: pointer;
+  background: #007bff;
+  color: white;
+  transition: 0.3s;
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

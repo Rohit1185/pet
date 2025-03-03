@@ -1,0 +1,93 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Content Area */
+.content {
+  padding: 20px;
+  background-color: #f4f7fc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+/* Dashboard Overview */
+.dashboard-overview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; 
+  max-width: 1200px;
+  width: 100%;
+  margin: 40px auto;
+
+}
+
+
+.stat-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Icon Styling */
+.stat-card i {
+  font-size: 40px;
+  margin-bottom: 15px;
+  transition: transform 0.3s;
+}
+
+.stat-card:hover i {
+  transform: scale(1.2);
+}
+
+/* Stat Text */
+.stat-card strong {
+  font-size: 26px;
+  color: #2c3e50;
+  margin-top: 8px;
+}
+.dashboard-content{
+  width: 100%;
+}
+/* Gradient Background Colors */
+.stat-card:nth-child(1) { background: linear-gradient(135deg, #74b9ff, #0984e3); color: white; }
+.stat-card:nth-child(2) { background: linear-gradient(135deg, #ff7675, #d63031); color: white; }
+.stat-card:nth-child(3) { background: linear-gradient(135deg, #55efc4, #00b894); color: white; }
+.stat-card:nth-child(4) { background: linear-gradient(135deg, #fdcb6e, #e17055); color: white; }
+.stat-card:nth-child(5) { background: linear-gradient(135deg, #6c5ce7, #4834d4); color: white; }
+.stat-card:nth-child(6) { background: linear-gradient(135deg, #fab1a0, #e84393); color: white; }
+.stat-card:nth-child(7) { background: linear-gradient(135deg, #81ecec, #00cec9); color: white; }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  #dashboard-overview {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #dashboard-overview {
+      grid-template-columns: 1fr; 
+  }
+}

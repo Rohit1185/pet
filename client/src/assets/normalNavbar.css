@@ -1,0 +1,137 @@
+/* ========== Navbar Styling ========== */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Logo Styling */
+.logo {
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Navbar Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+}
+
+/* Navbar Items */
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #ff6600;
+}
+
+/* Dropdown Styling */
+.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown span {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: color 0.3s ease-in-out;
+}
+
+.dropdown span:hover {
+    color: #ff6600;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 150px;
+    display: none;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
+.dropdown-menu li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu a {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s ease-in-out;
+}
+
+.dropdown-menu a:hover {
+    background: #ff6600;
+    color: white;
+}
+
+/* Profile Image */
+#drop {
+    display: flex;
+    align-items: center;
+}
+
+#drop img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ff6600;
+    transition: transform 0.3s ease-in-out;
+}
+
+#drop img:hover {
+    transform: scale(1.1);
+}
+
+/* ========== Responsive Styling ========== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dropdown-menu {
+        position: relative;
+        box-shadow: none;
+        border-radius: 0;
+    }
+}

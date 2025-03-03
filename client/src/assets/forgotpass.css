@@ -1,0 +1,95 @@
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Background Styling */
+  #forgot-password-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+  }
+  
+  /* Form Box */
+  .form-box {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .form-box:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Form Title */
+  .form-title {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  /* Input Fields */
+  .form-input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .form-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .form-input:focus {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Buttons */
+  .form-button {
+    width: 100%;
+    padding: 12px;
+    background: #ff8c00;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .form-button:hover {
+    background: #ff6500;
+  }
+  
+  /* Message Box */
+  .message-box {
+    background: rgba(255, 0, 0, 0.2);
+    padding: 10px;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  /* Form Styling */
+  .forgot-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  

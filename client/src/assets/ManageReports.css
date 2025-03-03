@@ -1,0 +1,33 @@
+.report-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  
+  .report-toggle button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background: #ddd;
+    font-weight: bold;
+    margin: 0 5px;
+  }
+  
+  .report-toggle .active-tab {
+    background: #2E86C1;
+    color: white;
+  }
+  
+  #download-btn {
+    background: #28a745;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  #download-btn:hover {
+    background: #218838;
+  }
+  

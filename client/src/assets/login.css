@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.log-main{
+    border: 1px solid black;
+    background-image: url('../assets/backimg2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Rubik", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+.login{
+    color: white;
+}
+#email{
+    position: relative;
+    left: 20px;
+}
+#password{
+    position: relative;
+    left: 20px;
+}
+.log-main2{
+    background-color: rgba(250, 235, 215, 0.057);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 1100px;
+    height: 500px;
+    border-radius: 25px;
+}
+.log-dog-photo{
+    left: 80px;
+    position: relative;
+    width: 80vw;
+}
+.log_box_white{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(240, 255, 127, 0.055);
+    height: 500px;
+    width: 100vw;
+    border-radius: 25px;
+}
+.logform2{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.log_box_white > form>h1{
+    text-align: center;
+    position: relative;
+    bottom: 50px;
+    font-weight: bolder;
+    font-size: 50px;
+}
+.log_box_white > form > input[type='email'],input[type='password']{
+    border-radius: 10px;
+    border:none;
+    height: 30px;
+    padding-left: 10px;
+}
+.log-label{
+    position: relative;
+    left: 20px;
+}
+.button-login{
+    color:rgb(187, 187, 187);
+    background-image: linear-gradient(to right, rgba(113, 39, 142, 0.943) , rgb(202, 99, 25));
+    border: none;
+    border-radius: 20px;
+    height: 27px;
+    font-weight: bolder;
+    font-size: 19px;
+    position: relative;
+    height: 30px;
+    cursor: pointer;
+    left: 20px;
+    top: 10px;
+}
+.log-in-link{
+    margin-top: 50px;
+    font-weight: 100;
+    position: relative;
+    left: 0%;
+}
+.log-in-link > a{
+    text-decoration: none;
+    outline: none;
+    color: rgb(65, 27, 27);
+}
+.response-message{
+    color: rgb(186, 6, 6);
+    margin-top: 10px;
+    font-weight: 400;
+}
+.error{
+    margin-left: 15px;
+    color: rgb(186, 6, 6);
+    height: 5px;
+    font-weight: 400;
+}

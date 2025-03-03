@@ -1,0 +1,93 @@
+.donation-form {
+  max-width: 900px;
+  margin: 40px auto;
+  height: 650px;
+  background: #1e1e1e;
+  color: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #f1c40f;
+}
+
+/* Form Row - Two Inputs in One Row */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 15px;
+}
+
+/* Each Column Inside the Row */
+.form-column {
+  flex: 1;
+  text-align: left;
+}
+
+/* Label Styling */
+.form-column > label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #f1c40f;
+}
+
+/* Input Fields Styling */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background: #333;
+  color: white;
+  font-size: 16px;
+
+}
+
+.input-field:focus {
+  border-color: #f1c40f;
+  outline: none;
+}
+
+/* Submit Button */
+.form-column > button {
+  width: 100%;
+  padding: 12px;
+  background: #27ae60;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-column > button:hover {
+  background: #219150;
+  transform: scale(1.02);
+}
+
+/* Success & Error Messages */
+.success-message {
+  color: #2ecc71;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: #e74c3c;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+  .form-row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,122 @@
+body{
+    background:linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%)
+}
+.pet-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    flex-wrap:wrap;
+    gap: 50px;
+    margin: 100px;
+}
+.pet-box{
+    background:linear-gradient(to bottom right,#ffffff, #f8f9ff);
+    flex: 0 0 calc(32.333% - 66px);
+    box-sizing: border-box;
+    min-width: 350px;
+    height: 600px;
+    padding: 20px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transorm 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(255,255,255,0.8);
+}
+.pet-box > img{
+    width: 350px;
+    height: 250px;
+}
+.pet-image-container> img{
+    width: 320px;
+    height: 250px;
+}
+.pet-box > h3,h4{
+    position: relative;
+    margin-top: 8px;
+}
+#adopt-btn-form{
+    width: 200px;
+    /* margin-top: 25px; */
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    color: black;
+    background-color: rgba(16, 36, 100, 0.37);
+    cursor: pointer;
+    font-weight: 600;
+}
+.adopt-details-pet{
+    height: 230px;
+    line-height: 30px;
+}
+.adopt-details-pet > span{
+    color: black;
+}
+/* Search Container */
+.search-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+.search-form > input[type='number']{
+    padding: 10px;
+    height: 45px;
+    bottom: 5px;
+    position: relative;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+.search-btn {
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background: #0056b3;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    margin: 5px;
+    border: 1px solid #007bff;
+    background: white;
+    color: #007bff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination button.active {
+    background: #007bff;
+    color: white;
+}
+
+.pagination button:hover {
+    background: #0056b3;
+    color: white;
+}

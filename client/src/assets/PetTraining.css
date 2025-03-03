@@ -1,0 +1,124 @@
+/* Main Container */
+.training-guide-container {
+    font-family: "Poppins", sans-serif;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 30px;
+    max-width: 100%;
+    text-align: center;
+    margin: auto;
+  }
+  
+  /* Pet Selection Dropdown */
+  .select-pet {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .select-pet h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #f1c40f;
+  }
+  
+  .select-pet select {
+    background-color: #333;
+    color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .select-pet select:hover {
+    background: #444;
+  }
+  
+  /* Training Section */
+  .training-section {
+    margin-top: 30px;
+  }
+  
+  .training-section h2 {
+    color: #27ae60;
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  
+  /* Training Item */
+  .training-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #292929;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .training-item:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Training Image */
+  .training-image {
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Training Details */
+  .training-details {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .training-details h3 {
+    color: #f1c40f;
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .training-details p {
+    font-size: 16px;
+    color: #ecf0f1;
+    line-height: 1.5;
+  }
+  
+  /* Training Video */
+  .training-video {
+    width: 80%;
+    max-width: 600px;
+    height: 300px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .training-guide-container {
+      padding: 20px;
+    }
+  
+    .training-item {
+      flex-direction: column;
+    }
+  
+    .training-image, .training-video {
+      width: 100%;
+    }
+  
+    .training-details h3 {
+      font-size: 20px;
+    }
+  }
+  

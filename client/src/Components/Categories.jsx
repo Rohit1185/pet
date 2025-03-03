@@ -1,0 +1,22 @@
+export const Categories = [
+    { categoryname: "Paws & Claws Health Camp", cid: 1 },
+    { categoryname: "Healthy Tails Drive", cid: 2 },
+    { categoryname: "Furry Wellness Check", cid: 3 },
+    { categoryname: "Vaccination & Deworming Drive", cid: 4 },
+    { categoryname: "Paws First Aid Workshop", cid: 5 },
+    { categoryname: "Sit, Stay, Play! Training Camp", cid: 6 },
+    { categoryname: "Paw-sitive Training Workshop", cid: 7 },
+    { categoryname: "Kitty Manners 101", cid: 8 },
+    { categoryname: "Leash It Right Walkathon", cid: 9 },
+    { categoryname: "Agility & Fun Games Day", cid: 10 },
+    { categoryname: "Forever Home Adoption Drive", cid: 11 },
+    { categoryname: "Paws & Hearts Adoption Fair", cid: 12 },
+    { categoryname: "Rescue & Rehome Drive", cid: 13 },
+    { categoryname: "Shelter to Sofa Program", cid: 14 },
+    { categoryname: "Adopt-a-Paw Weekend", cid: 15 },
+    { categoryname: "Stray Lives Matter Campaign", cid: 16 },
+    { categoryname: "Bark for a Cause Walkathon", cid: 17 },
+    { categoryname: "Furry Fashion Show", cid: 18 },
+    { categoryname: "DIY Pet Toy Workshop", cid: 19 },
+    { categoryname: "Love & Let Live Anti-Cruelty Drive", cid: 20 }
+];

@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+.main-footer{
+    background-color: #222831;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+}
+.footer{
+    display: flex;
+    flex-direction: column;
+}
+#f-link{
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    font-family: "Mulish", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+.main-footer{
+    display: flex;
+}
+.footer-contact{
+    margin-left: 300px;
+}
+.footer-contact > form{
+    height: 350px;
+    display: flex;
+    margin-top: 20px;
+    padding-top: 20px;
+    flex-direction: column;
+    
+}
+.footer-contact > form > label{
+    margin-top: 10px;
+    font-family: "Mulish", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+#fid{
+    color: gray;
+    font-weight: bold;
+}
+.footer-contact > form > textarea{
+    border-radius: 5px;
+}
+.footer-contact > form > button[type='submit']{
+    width: 250px;
+    margin: auto;
+    position: relative;
+    top: 20px;
+    padding: 0px;
+    background-color: #6EACDA;
+    color: white;
+    border: none;
+    height: 30px;
+    cursor: pointer;
+}

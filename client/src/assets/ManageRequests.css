@@ -1,0 +1,36 @@
+/* ✅ General Button Styles */
+#save-btn, #cancel-btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-right: 5px;
+  }
+  
+  /* ✅ Save Button */
+  #save-btn {
+    background: #28a745;
+    color: white;
+  }
+  
+  #save-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 128, 0, 0.3);
+  }
+  
+  /* ✅ Cancel Button */
+  #cancel-btn {
+    background: #dc3545;
+    color: white;
+  }
+  
+  #cancel-btn:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(220, 53, 69, 0.3);
+  }
+  

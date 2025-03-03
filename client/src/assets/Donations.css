@@ -1,0 +1,158 @@
+/* 🌟 Donation Records Page - Dark Themed Styling 🌟 */
+
+.donation-records-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  background: #222;
+  color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+  font-family: "Poppins", sans-serif;
+}
+.donation-records-container > form{
+  height: 100px;
+}
+h2 {
+  text-align: center;
+  color: #f1c40f;
+  margin-bottom: 20px;
+}
+
+/* 📝 Form Styling */
+.donation-records-form {
+  background: #333;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.donation-records-form-row {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* 📌 Form Column */
+.donation-records-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+}
+.donation-records-column > button{
+  margin-top: 25px;
+  margin-left: 30px;
+  transition: all ease 0.5s;
+}
+label {
+  font-weight: bold;
+  color: #f1c40f;
+  margin-bottom: 5px;
+}
+
+.donation-records-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background: #2c2c2c;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.donation-records-input:focus {
+  border-color: #f1c40f;
+  outline: none;
+}
+
+/* 🎯 Button Styling */
+.donation-records-button {
+  width: 100%;
+  padding: 12px;
+  background: #27ae60;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.donation-records-button:hover {
+  background: #219150;
+  transform: scale(1.05);
+}
+
+/* ⚠️ Error Message */
+.donation-records-error {
+  color: #e74c3c;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* 📊 Table Styling */
+.donation-records-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.donation-records-table th,
+.donation-records-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+
+.donation-records-table th {
+  background: #f1c40f;
+  color: #222;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.donation-records-table tr:nth-child(even) {
+  background: #2a2a2a;
+}
+
+.donation-records-table tr:nth-child(odd) {
+  background: #1e1e1e;
+}
+
+/* 📥 Download Button */
+.donation-records-download {
+  padding: 8px 12px;
+  background: #f39c12;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.donation-records-download:hover {
+  background: #e67e22;
+  transform: scale(1.05);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .donation-records-form-row {
+    flex-direction: column;
+  }
+
+  .donation-records-button {
+    font-size: 16px;
+  }
+
+  .donation-records-table th,
+  .donation-records-table td {
+    font-size: 14px;
+  }
+}
